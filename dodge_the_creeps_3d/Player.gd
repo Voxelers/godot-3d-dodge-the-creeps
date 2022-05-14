@@ -59,12 +59,15 @@ func _physics_process(delta):
 				mob.squash()
 				velocity.y = bounce_impulse
 
-	# This makes the character follow a nice arc when jumping
+	# This makes the character follow a nice arc when jumping	
 	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 
 
 func die():
 	emit_signal("hit")
+	# Reproduce the killed animation
+	$AnimationPlayer.play("killed")
+	yield($AnimationPlayer, "animation_finished")
 	queue_free()
 
 
