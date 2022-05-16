@@ -1,5 +1,6 @@
 extends KinematicBody
 
+signal fire
 signal hit
 
 # How fast the player moves in meters per second.
@@ -15,7 +16,7 @@ var velocity = Vector3.ZERO
 
 
 func _physics_process(delta):
-	var direction = Vector3.ZERO
+	var direction = Vector3.ZERO	
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -24,6 +25,9 @@ func _physics_process(delta):
 		direction.z += 1
 	if Input.is_action_pressed("move_forward"):
 		direction.z -= 1
+	
+	if Input.is_action_pressed("fire"):
+		emit_signal("fire")
 
 	if direction != Vector3.ZERO:
 		# In the lines below, we turn the character when moving and make the animation play faster.

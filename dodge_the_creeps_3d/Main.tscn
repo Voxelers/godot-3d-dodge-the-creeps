@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ScoreLabel.gd" type="Script" id=6]
 [ext_resource path="res://ui_theme.tres" type="Theme" id=7]
 
@@ -26,6 +27,7 @@ _data = {
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 mob_scene = ExtResource( 3 )
+bullet_scene = ExtResource( 4 )
 
 [node name="Ground" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
@@ -90,7 +92,6 @@ loop = false
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [node name="UserInterface" type="Control" parent="."]
 anchor_right = 1.0
@@ -132,5 +133,6 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]

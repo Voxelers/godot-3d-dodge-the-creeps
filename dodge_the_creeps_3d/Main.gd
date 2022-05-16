@@ -1,6 +1,7 @@
 extends Node
 
 export(PackedScene) var mob_scene
+export(PackedScene) var bullet_scene
 
 
 func _ready():
@@ -35,3 +36,10 @@ func _on_MobTimer_timeout():
 func _on_Player_hit():
 	$MobTimer.stop()
 	$UserInterface/Retry.show()
+
+
+func _on_Player_fire():
+	var bullet = bullet_scene.instance()
+	var player_position = $Player.transform.origin
+	bullet.initialize(player_position)
+	add_child(bullet)
