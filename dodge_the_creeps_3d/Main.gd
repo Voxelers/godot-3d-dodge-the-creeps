@@ -41,5 +41,6 @@ func _on_Player_hit():
 func _on_Player_fire():
 	var bullet = bullet_scene.instance()
 	var player_position = $Player.transform.origin
-	bullet.initialize(player_position)
+	var pivot = get_tree().get_root().get_node("Main/Player/Pivot")
+	bullet.initialize(player_position, pivot.rotation)
 	add_child(bullet)
