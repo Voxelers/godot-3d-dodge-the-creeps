@@ -14,3 +14,8 @@ disabled = true
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 radius = 0.25
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+aabb = AABB( -0.206698, -0.203391, -0.196934, 0.413396, 0.406781, 0.393868 )
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

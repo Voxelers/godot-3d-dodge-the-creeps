@@ -17,3 +17,6 @@ func initialize(start_position, start_rotation):
 	
 func _physics_process(_delta):
 	move_and_slide(velocity)
+
+func _on_VisibilityNotifier_screen_exited():
+	queue_free()
