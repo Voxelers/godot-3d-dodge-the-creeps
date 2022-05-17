@@ -3,6 +3,11 @@ extends Node
 export(PackedScene) var mob_scene
 export(PackedScene) var bullet_scene
 
+# Bullets conifg
+export var max_bullets = 5
+var bullets_group = 'bullets'
+var last_time_fired = 0
+var min_fire_delay_ms = 100
 
 func _ready():
 	randomize()
@@ -39,8 +44,12 @@ func _on_Player_hit():
 
 
 func _on_Player_fire():
-	var bullet = bullet_scene.instance()
-	var player_position = $Player.transform.origin
-	var pivot = get_tree().get_root().get_node("Main/Player/Pivot")
-	bullet.initialize(player_position, pivot.rotation)
-	add_child(bullet)
+	var number_of_bullets = len(get_tree().get_nodes_in_group(bullets_group))
+	var fire_delay_ms = OS.get_ticks_msec() - last_time_fired
+	if number_of_bullets < max_bullets and  fire_delay_ms > min_fire_delay_ms:
+		last_time_fired = OS.get_ticks_msec()
+		var bullet = bullet_scene.instance()
+		var player_position = $Player.transform.origin
+		var pivot = get_tree().get_root().get_node("Main/Player/Pivot")
+		bullet.initialize(player_position, pivot.rotation)
+		add_child(bullet)

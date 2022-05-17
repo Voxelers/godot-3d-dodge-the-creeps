@@ -5,7 +5,7 @@
 [sub_resource type="SphereShape" id=1]
 radius = 0.25
 
-[node name="Bullet" type="KinematicBody"]
+[node name="Bullet" type="KinematicBody" groups=["bullets"]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
