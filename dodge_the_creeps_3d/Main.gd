@@ -36,6 +36,8 @@ func _on_MobTimer_timeout():
 	add_child(mob)
 	# We connect the mob to the score label to update the score upon squashing a mob.
 	mob.connect("squashed", $UserInterface/ScoreLabel, "_on_Mob_squashed")
+	# and the same for hits
+	mob.connect("hit_by_bullet", $UserInterface/Hits, "_on_Mob_hit_by_bullet")
 
 
 func _on_Player_hit():

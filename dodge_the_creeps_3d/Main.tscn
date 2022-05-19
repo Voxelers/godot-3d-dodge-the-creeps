@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HitsLabel.gd" type="Script" id=5]
 [ext_resource path="res://ScoreLabel.gd" type="Script" id=6]
 [ext_resource path="res://ui_theme.tres" type="Theme" id=7]
 
@@ -92,26 +93,30 @@ loop = false
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
+autostart = true
 
 [node name="UserInterface" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScoreLabel" type="Label" parent="UserInterface"]
-margin_left = 20.0226
-margin_top = 16.0181
-margin_right = 126.023
-margin_bottom = 71.0181
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 114.0
+margin_bottom = 71.0
 custom_colors/font_color = Color( 0.2, 0.184314, 0.215686, 1 )
 text = "Score: 0"
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Hits" type="Label" parent="UserInterface"]
+margin_left = 126.0
+margin_top = 16.0
+margin_right = 232.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 0.2, 0.184314, 0.215686, 1 )
+text = "Hits: 0"
+script = ExtResource( 5 )
 
 [node name="Retry" type="ColorRect" parent="UserInterface"]
 visible = false

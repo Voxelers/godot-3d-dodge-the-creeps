@@ -2,6 +2,8 @@ extends KinematicBody
 
 # Emitted when the player jumped on the mob.
 signal squashed
+# Emitted when a bullet hit the mob
+signal hit_by_bullet
 
 # Minimum speed of the mob in meters per second.
 export var min_speed = 10
@@ -31,6 +33,11 @@ func initialize(start_position, player_position):
 
 func squash():
 	emit_signal("squashed")
+	queue_free()
+
+
+func hit_by_bullet():
+	emit_signal("hit_by_bullet")
 	queue_free()
 
 
