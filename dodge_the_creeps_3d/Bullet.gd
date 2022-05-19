@@ -37,3 +37,4 @@ func _on_VisibilityNotifier_screen_exited():
 func _on_Mob_Detector_body_entered(mob):
 	print("The bullet hit a mob")
 	mob.hit_by_bullet()
+	queue_free()
