@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -24,6 +24,8 @@ _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 14, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, -15 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0 )
 }
+
+[sub_resource type="SphereShape" id=6]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -137,6 +139,15 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 6.51373 )
+collision_mask = 3
+
+[node name="CSGSphere" type="CSGSphere" parent="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 6 )
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
