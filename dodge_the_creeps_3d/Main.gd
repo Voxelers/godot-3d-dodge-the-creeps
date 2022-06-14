@@ -9,6 +9,8 @@ var bullets_group = 'bullets'
 var last_time_fired = 0
 var min_fire_delay_ms = 100
 
+onready var DissolveShader = preload("res://VisualShaders.tres")
+
 func _ready():
 	randomize()
 	$UserInterface/Retry.hide()
@@ -41,6 +43,9 @@ func _on_MobTimer_timeout():
 
 
 func _on_Player_hit():
+	# $Ground/MeshInstance.material = ShaderMaterial.new()
+	$Ground/MeshInstance.set_surface_material(0, DissolveShader)
+
 	$MobTimer.stop()
 	$UserInterface/Retry.show()
 
