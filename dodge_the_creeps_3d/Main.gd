@@ -43,8 +43,8 @@ func _on_MobTimer_timeout():
 
 
 func _on_Player_hit():
-	# $Ground/MeshInstance.material = ShaderMaterial.new()
-	$Ground/MeshInstance.set_surface_material(0, DissolveShader)
+	$Mountain/CSGSphere.material = DissolveShader
+	# $Ground/MeshInstance.set_surface_material(0, DissolveShader)
 
 	$MobTimer.stop()
 	$UserInterface/Retry.show()

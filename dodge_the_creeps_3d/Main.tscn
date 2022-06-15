@@ -173,14 +173,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="Mountain" type="StaticBody" parent="."]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 6.51373 )
 collision_mask = 3
 
-[node name="CSGSphere" type="CSGSphere" parent="StaticBody"]
+[node name="CSGSphere" type="CSGSphere" parent="Mountain"]
 material = SubResource( 9 )
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Mountain"]
 shape = SubResource( 6 )
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
